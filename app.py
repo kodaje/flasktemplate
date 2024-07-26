@@ -2,8 +2,6 @@ from flask import Flask, render_template, request, url_for, flash, redirect, abo
 # ...
 import datetime
 import sqlite3
-connection = sqlite3.connect("aquarium.db")
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'd91b8d4a675e2077adc73c94c3ff55143956d2f07ae7e3e5'
@@ -15,7 +13,7 @@ messages = [{'title': 'Message One',
             ]
 			
 def get_db_connection():
-			conn = sqlite3.connect('../db/database.db')
+			conn = sqlite3.connect('db/database.db')
 			conn.row_factory = sqlite3.Row
 			return conn
 
