@@ -1,0 +1,76 @@
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+.alert{
+	color: red;
+}
+
+.button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 11px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+.buttonEdit {background-color: #008CBA;} /* Blue */
+.buttonDelete {background-color: #f44336;} /* Red */
+
+</style>
+
+<header>
+  <div class="container">
+	<h1 class="logo">First Web App</h1>
+	<strong><nav>
+ 	  <ul>
+		<li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+		<li><a href="{{ url_for('about') }}">About</a></li>
+		<li><a href="{{ url_for('post') }}">Post</a></li>
+	  </ul>
+ 	</nav>
+	</strong>
+  </div>
+</header>
+
+
+ <div class="content">
+	{% for message in get_flashed_messages() %}
+		<div class="alert">{{ message }}</div>
+	{% endfor %}
+ </div>
+
+
+{% block content %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'header.html' %}
+
+{% block content %}
+	<h1>{% block title %} All Posts {% endblock %}</h1>
+	<br></br>
+
+	<a href="{{ url_for('create') }}">Add new</a>
+
+	<table border="1">
+	<tr>
+		<td>No.</td>
+		<td>Created at</td>
+		<td>Title/Content</td>
+		<td>Action</td>
+
+	 </tr>
+	{% for post in posts %}
+  				 <tr>
+					<td>{{ post['id'] }}</td>
+					<td>{{ post['created'] }}</td> 
+					<td><b>{{ post['title'] }}</b> <br> {{ post['content'] }}</td> 
+					<td> 
+					<form action="{{ url_for('delete', id=post['id']) }}" method="POST">
+						<a class="button buttonEdit" href="{{ url_for('edit', id=post['id']) }}">Edit</a> &nbsp;&nbsp;
+						<input class="button buttonDelete" type="submit" value="Delete"
+								onclick="return confirm('Are you sure you want to delete this post?')">
+					</form>
+					
+					</td> 
+				 </tr>
+ 	{% endfor %}
+	 			</table>
+				 
+				 
+{% endblock %}
